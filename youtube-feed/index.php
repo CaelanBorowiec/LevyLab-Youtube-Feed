@@ -191,8 +191,30 @@ function searchListMine($service, $part, $params)
   echo '</pre>';
   */
 }
-
-searchListMine($service,
-    'snippet',
-    array('maxResults' => 25, 'forMine' => true, 'q' => 'Lab Meeting', 'type' => 'video'));
 ?>
+
+<!DOCTYPE html>
+<html class="ui-mobile">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<base href=".">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>QR Code Editor</title>
+	<link href="css/pure-min.css" rel="stylesheet" type="text/css">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body class="ui-mobile-viewport ui-overlay-a" style="">
+	<div class="ui-page ui-page-theme-a ui-page-active" data-role="page" style="" tabindex="0">
+		<div class="container">
+      <h1>Feed of latest videos for LevyLab Research</h1>
+			<div class="content">
+				<?php
+          searchListMine($service,
+              'snippet',
+              array('maxResults' => 25, 'forMine' => true, 'q' => 'Lab Meeting', 'type' => 'video'));
+        ?>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
