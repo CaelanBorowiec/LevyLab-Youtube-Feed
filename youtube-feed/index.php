@@ -185,9 +185,11 @@ function searchListMine($service, $part, $params)
   }
   echo '</ul>';
 
+  /*
   echo '<pre>';
   print_r($response->items);
   echo '</pre>';
+  */
 }
 
 searchListMine($service,
