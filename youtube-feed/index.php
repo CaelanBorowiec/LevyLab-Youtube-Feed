@@ -169,22 +169,28 @@ function uploadMedia($client, $request, $filePath, $mimeType) {
 
 // Sample php code for search.list
 
-function searchListMine($service, $part, $params) {
-    $params = array_filter($params);
-    $response = $service->search->listSearch(
-        $part,
-        $params
-    );
-	echo '<pre>';
-//	print_r($response->items);
-	foreach($response->items as $key=>$value){
-	 // print_r($value);
-		echo $value->snippet->title . ' = ' . $value->id->videoId . '<br>';
-	}
-	echo '</pre>';
+function searchListMine($service, $part, $params)
+{
+  $params = array_filter($params);
+  $response = $service->search->listSearch(
+    $part,
+    $params
+  );
+
+  echo '<ul>';
+  foreach($response->items as $key=>$value)
+  {
+    // print_r($value);
+    echo '<li><a href="https://www.youtube.com/watch?v=' . $value->id->videoId . '">' . $value->snippet->title . '</a> ('. date("m/d/Y", strtotime($value->snippet->publishedAt)) .') </li>';
+  }
+  echo '</ul>';
+
+  echo '<pre>';
+  print_r($response->items);
+  echo '</pre>';
 }
 
 searchListMine($service,
-    'snippet', 
+    'snippet',
     array('maxResults' => 25, 'forMine' => true, 'q' => 'Lab Meeting', 'type' => 'video'));
 ?>
